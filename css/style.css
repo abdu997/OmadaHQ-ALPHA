@@ -1,0 +1,108 @@
+/*
+$font: "Raleway", sans-serif;
+$background: #f1f1f1!important;
+$tile: whitesmoke;
+$padding: 25px;
+*/
+html,
+body,
+h1,
+h2,
+h3,
+h4 {
+    font-family: "Raleway", sans-serif;
+}
+
+@media (max-width: 991px) {
+    .left {
+        margin-right: 15px
+    }
+}
+.w3-bar,
+.w3-bar:link,
+.w3-bar:hover,
+.w3-bar:active,
+.w3-bar:visited {
+    text-decoration: none;
+}
+
+.active.w3-bar{
+    color: #fff!important;
+    background-color: #2196F3!important;
+}
+
+.w3-bar,
+.w3-bar:hover, 
+.w3-bar:hover {
+    color: #000!important;
+    background: inherit;
+}
+
+.team-name {
+    margin-top: -30px;
+    z-index: 3;
+    text-transform: capitalize;
+}
+
+.icon {
+    margin-right: 10px;
+}
+
+.w3-top {
+    position: static;
+}
+
+input {
+    margin-bottom: 5px;
+}
+
+.w3-input {
+    padding: 7px;
+}
+.asterisk {
+    color: red;
+    margin-left: 5px;
+    font-size: 15px;
+}
+
+.tile-bg {
+    background: white;
+    padding: 25px;
+    box-shadow: 2px 2px 3px rgba(0,0,0,0.5);
+    margin-bottom: 15px;
+    margin-top: 15px;
+}
+
+
+@-webkit-keyframes spin {
+  0% { -webkit-transform: rotate(0deg); }
+  100% { -webkit-transform: rotate(360deg); }
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Add animation to "page content" */
+.animate-bottom {
+  position: relative;
+  -webkit-animation-name: animatebottom;
+  -webkit-animation-duration: 1s;
+  animation-name: animatebottom;
+  animation-duration: 1s
+}
+
+@-webkit-keyframes animatebottom {
+  from { bottom:-100px; opacity:0 } 
+  to { bottom:0px; opacity:1 }
+}
+
+@keyframes animatebottom { 
+  from{ bottom:-100px; opacity:0 } 
+  to{ bottom:0; opacity:1 }
+}
+
+#app {
+  display: none;
+}
