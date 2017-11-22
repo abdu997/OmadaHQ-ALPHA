@@ -267,7 +267,7 @@ app.controller('PERTController', function($scope, $http) {
                 $scope.end_time = "";
                 $scope.start_time = "";
             } else {
-                alert(data);
+               alert(data);
             }
         });
     }
@@ -275,6 +275,21 @@ app.controller('PERTController', function($scope, $http) {
     $scope.fetchGoals = function() {
         $http.get("php/PERT/readGoal.php").success(function(data) {
             $scope.goals = data;
+        });
+    }
+    
+    $scope.selectGoal =  function(record_id){
+        $scope.record_id = record_id;
+        $http.post(
+            "php/PERT/selectGoal.php", {
+                'record_id': $scope.record_id
+            }
+        ).success(function(data){
+            if(data == "success"){
+               window.location.href='tasks.php';
+           } else {
+               alert(data);
+           }
         });
     }
     
@@ -286,7 +301,8 @@ app.controller('PERTController', function($scope, $http) {
         $scope.edit_start_message = start_message;
     }
     
-    $scope.editGoalForm = function(){
+    $scope.editGoalForm = function(record_id){
+        alert($scope.edit_goal_name);
         $http.post(
             "php/PERT/updateGoal.php",{
                 'goal_name': $scope.edit_goal_name,
@@ -316,7 +332,9 @@ app.controller('PERTController', function($scope, $http) {
                 }
             ).success(function(data){
                 if (data == "success"){
-                    $scope.fetchGoals();
+                    if($scope.type == "goal"){
+                        $scope.fetchGoals();
+                    }
                 } else {
                     alert(data);
                 }
@@ -382,21 +400,6 @@ app.controller('PERTController', function($scope, $http) {
             } else {
                 alert(data);
             }
-        });
-    }
-    
-    $scope.selectGoal =  function(record_id){
-        $scope.record_id = record_id;
-        $http.post(
-            "php/PERT/selectGoal.php", {
-                'record_id': $scope.record_id
-            }
-        ).success(function(data){
-            if(data == "success"){
-               window.location.href='tasks.php';
-           } else {
-               alert(data);
-           }
         });
     }
 });
