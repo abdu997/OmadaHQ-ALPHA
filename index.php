@@ -50,7 +50,7 @@ header('Location: login.php');
             <div class="row">
                 <div class="col-md-12">
                     <div class="tile-bg" style="display:none;" id="app" class="animate-bottom">
-                        <?php include'projectManager.php';?>
+                        <?php include'goals.php';?>
                     </div>
                 </div>
             </div>

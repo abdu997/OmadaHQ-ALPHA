@@ -1,8 +1,12 @@
 <?php 
 error_reporting(E_ERROR);
 include "php/connect.php";
-if(isset($_GET['token'])){
+if(isset($_GET['email'])){
     $email = $_GET['email'];
+    $hidden = "hidden";
+    $display = "display";
+} else {
+    $display = "hidden";
 }
 ?>
 <html>
@@ -44,10 +48,12 @@ if(isset($_GET['token'])){
     <body ng-app="loginApp" ng-controller="webEntranceController" class="w3-display-middle">
         <center>
             <h1 style="margin-bottom: 30px">OmadaHQ</h1>
-            <button ng-click="navButton()" id="loginTab" class="w3-button" style="width: 96px">Login</button>
-            <button ng-click="navButton()" id="registerTab" class="w3-button" style="width: 96px">Register</button>
+            <div class="<?php echo $hidden;?>">
+                <button ng-click="navButton()" id="loginTab" class="w3-button" style="width: 96px">Login</button>
+                <button ng-click="navButton()" id="registerTab" class="w3-button" style="width: 96px">Register</button>
+            </div>
         </center><br>
-        <form id="loginForm">
+        <form id="loginForm" class="<?php echo $hidden;?>">
             <label>Email</label><br>
             <input type="email" ng-model="email" class="w3-input w3-border-0"><br>
             <label>Password</label><br>
@@ -58,10 +64,10 @@ if(isset($_GET['token'])){
             <p>Don't have an account?</p>
             <a id="registerTab2">Register here!</a><br>
         </form>
-        <div id="registerForm" class="hidden" style="width: 200px">
+        <div id="registerForm" class="<?php echo $display;?>" style="width: 200px">
             <form ng-hide="registerForm">
                 <label>Email</label><br>
-                <input type="email" ng-model="registerEmail" value="<?php echo $email;?>" class="w3-input w3-border-0"><br>
+                <input type="email" id="registerEmail" value="<?php echo $email;?>" class="w3-input w3-border-0"><br>
                 <small style="color: red;" ng-show="emailInvalid">Valid email is required<br></small>
                 <label>First Name</label><br>
                 <input type="text" ng-model="firstName" class="w3-input w3-border-0" pattern="[a-zA-Z]+" ng-pattern-restrict><br>
@@ -145,8 +151,8 @@ if(isset($_GET['token'])){
             }
             
             $scope.emailpattern = /[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$/;
-            $scope.register = function() {
-                if($scope.emailpattern.test($scope.registerEmail)) {
+            $scope.register = function() { ;
+                if($scope.emailpattern.test(document.getElementById("registerEmail"))) {
                     if($scope.firstName == null){
                         $scope.firstEmpty = true;
                         $scope.emailInvalid = false;
@@ -163,7 +169,7 @@ if(isset($_GET['token'])){
                     } else {
                         $http.post(
                             "php/registerRequest.php", {
-                                'email': $scope.registerEmail,
+                                'email': document.getElementById("registerEmail"),
                                 'first_name': $scope.firstName,
                                 'last_name': $scope.lastName
                             }
@@ -175,7 +181,7 @@ if(isset($_GET['token'])){
                                 $scope.emailInvalid = false;
                                 $scope.registerSuccess = false;
                             } else if(data == "success"){
-                                $scope.registerEmail = null;
+                                document.getElementById("registerEmail") = null;
                                 $scope.firstName = null;
                                 $scope.lastName = null;
                                 $scope.registerSuccess = true;

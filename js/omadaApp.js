@@ -244,3 +244,159 @@ app.controller('SessionController', function($scope, $http) {
         }
     }
 });
+app.controller('PERTController', function($scope, $http) {
+    $scope.createGoal = function(){
+        $http.post(
+            "php/PERT/createRecord.php", {
+                'goal_name': $scope.goal_name,
+                'goal_description': $scope.goal_description,
+                'start_message': $scope.start_message,
+                'end_time': $scope.end_time,
+                'start_time': $scope.start_time,
+                'type': 'goal'
+            }
+        ).success(function(data) {
+            if (data == 'success') {
+                $scope.fetchGoals();
+                document.getElementById('questionaire').style.display='none';
+                document.getElementById('create_task').style.display='block';
+                $scope.task_create = false;
+                $scope.goal_name = "";
+                $scope.goal_description = "";
+                $scope.start_message = "";
+                $scope.end_time = "";
+                $scope.start_time = "";
+            } else {
+                alert(data);
+            }
+        });
+    }
+    
+    $scope.fetchGoals = function() {
+        $http.get("php/PERT/readGoal.php").success(function(data) {
+            $scope.goals = data;
+        });
+    }
+    
+    $scope.editGoal = function(record_id, name, description, start_message){
+     document.getElementById('editQuestionaire').style.display='block';
+        $scope.record_id = record_id;
+        $scope.edit_goal_name = name;
+        $scope.edit_goal_description = description;
+        $scope.edit_start_message = start_message;
+    }
+    
+    $scope.editGoalForm = function(){
+        $http.post(
+            "php/PERT/updateGoal.php",{
+                'goal_name': $scope.edit_goal_name,
+                'goal_description': $scope.edit_goal_description,
+                'start_message': $scope.edit_start_message,
+                'end_time': $scope.edit_end_time,
+                'start_time': $scope.edit_start_time,
+                'record_id': $scope.record_id,
+            }
+        ).success(function(data){
+            if(data == "success"){
+                document.getElementById('editQuestionaire').style.display='none';
+                $scope.fetchGoals();
+            } else {
+                alert(data);
+            }
+        });
+    }
+    $scope.deleteRecord = function(record_id, type){
+        $scope.record_id = record_id;
+        $scope.type = type;
+        if (confirm("Are you sure you want to delete this? All contents will be deleted.")){
+            $http.post(
+                "php/PERT/deleteRecord.php", 
+                {
+                    'record_id': $scope.record_id,
+                }
+            ).success(function(data){
+                if (data == "success"){
+                    $scope.fetchGoals();
+                } else {
+                    alert(data);
+                }
+            });
+        }
+    }
+    
+    $scope.createTask = function(){
+        $http.post(
+            "php/PERT/createRecord.php", {
+                'task_name': $scope.task_name,
+                'optimistic_time': $scope.optimistic_time,
+                'realistic_time': $scope.realistic_time,
+                'pessimistic_time': $scope.pessimistic_time,
+                'type': 'task'
+            }
+        ).success(function(data){
+            if(data == "success"){
+                $scope.task_create = true;
+                $scope.sub_task_create = false;
+            } else {
+                alert(data);
+            }
+        });
+    }
+    $scope.createSubTask = function(){
+        $http.post(
+            "php/PERT/createRecord.php", {
+                'sub_task_name': $scope.sub_task_name,
+                'sub_optimistic_time': $scope.sub_optimistic_time,
+                'sub_realistic_time': $scope.sub_realistic_time,
+                'sub_pessimistic_time': $scope.sub_pessimistic_time,
+                'type': 'sub_task'
+            }
+        ).success(function(data){
+            if(data == "success"){
+                alert("Sub task created!");
+                $scope.sub_task_name = "";
+                $scope.sub_optimistic_time = "";
+                $scope.sub_realistic_time = "";
+                $scope.sub_pessimistic_time = "";
+            } else {
+                alert(data);
+            }
+        });
+    }
+    
+    $scope.fetchSubTasks = function(){
+        $http.get("php/PERT/readSubTasks.php").success(function(data){
+            $scope.subTasks = data;
+        });
+    }
+    
+    $scope.changeSubTaskProgress = function(record_id){
+        $scope.record_id = record_id;
+        $http.post(
+            "php/PERT/updateSubTaskProgress.php", {
+                'record_id':  $scope.record_id,
+            }
+        ).success(function(data){
+            if (data == "success"){
+                $scope.fetchSubTasks();
+            } else {
+                alert(data);
+            }
+        });
+    }
+    
+    $scope.selectGoal =  function(record_id){
+        $scope.record_id = record_id;
+        $http.post(
+            "php/PERT/selectGoal.php", {
+                'record_id': $scope.record_id
+            }
+        ).success(function(data){
+            if(data == "success"){
+               window.location.href='tasks.php';
+           } else {
+               alert(data);
+           }
+        });
+    }
+});
