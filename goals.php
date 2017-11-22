@@ -31,7 +31,17 @@
 </style>
 <div class="containter" ng-init="fetchGoals()">
     <div class="row">
-        <!-- ngRepeat: x in goals -->
+        <div class="col-sm-3" ng-repeat="x in goals">
+            <div>
+                <div ng-click="editGoal(x.record_id, x.name, x.description, x.start_message)" style="float: left; margin: 10px; cursor: pointer;"><i class="fa fa-cog fw"></i></div>
+                <div ng-click="deleteRecord(x.record_id, x.type)" style="float: right; color: red; margin: 10px; cursor: pointer;"><i class="fa fa-trash fw"></i></div>
+                <center class="goal">
+                    <h2 style="margin-bottom: 40px; text-transform: capitalize;">{{x.name}}</h2>
+                    <p style="float: left; text-transform: capitalize;">By {{x.user}}</p>
+                    <p style="float: right">{{x.end_time}}</p>
+                </center>
+            </div>
+        </div>
         <div class="col-sm-3">
             <div class="goal" onclick="document.getElementById('questionaire').style.display='block'">
                 <center>
