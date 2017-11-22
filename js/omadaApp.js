@@ -293,16 +293,17 @@ app.controller('PERTController', function($scope, $http) {
         });
     }
     
-    $scope.editGoal = function(record_id, name, description, start_message){
+    $scope.editGoal = function(record_id, name, description, start_message, start_time, end_time){
      document.getElementById('editQuestionaire').style.display='block';
         $scope.record_id = record_id;
         $scope.edit_goal_name = name;
         $scope.edit_goal_description = description;
         $scope.edit_start_message = start_message;
+        $scope.edit_start_time = start_time;
+        $scope.edit_end_time = end_time;
     }
     
     $scope.editGoalForm = function(record_id){
-        alert($scope.edit_goal_name);
         $http.post(
             "php/PERT/updateGoal.php",{
                 'goal_name': $scope.edit_goal_name,
