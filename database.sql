@@ -49,7 +49,7 @@ CREATE TABLE `team_nonuser` (
 ) ENGINE=InnoDB AUTO_INCREMENT=01 DEFAULT CHARSET=latin1;
 
 CREATE TABLE `pert_table` (
-  `record_id` int(11) NOT NULL,
+  `record_id` int(11) NOT NULL AUTO_INCREMENT,
   `type` varchar(255) DEFAULT NULL,
   `team_id` int(11) NOT NULL,
   `user_id` int(11) NOT NULL,
@@ -67,5 +67,7 @@ CREATE TABLE `pert_table` (
   `color` varchar(10) DEFAULT NULL,
   `progress` varchar(20) DEFAULT NULL,
   `timestamp` timestamp NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
-  `status` varchar(255) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 ROW_FORMAT=COMPACT;
+  `status` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`record_id`),
+  UNIQUE KEY `record_id_UNIQUE` (`record_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=01 DEFAULT CHARSET=latin1;
