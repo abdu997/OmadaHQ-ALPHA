@@ -12,7 +12,7 @@ $user_id = $_SESSION['user_id'];
 </style>
 <div class="w3-bar w3-top w3-black w3-large" style="z-index:4; position: fixed; background: #2196F3!important;">
     <button class="w3-bar-item w3-button w3-hide-large w3-hover-none w3-hover-text-light-grey w3-right" style="color:white" onclick="w3_open();"><i class="fa fa-bars"></i> &nbsp;Menu</button>
-    <span class="w3-bar-item" style="color:white">OmadaHQ<small style="font-size: 10px">BETA</small></span>
+    <span class="w3-bar-item" style="color:white">OmadaHQ<small style="font-size: 10px; text-transform: uppercase">alpha</small></span>
 </div>
 <nav class="w3-sidebar w3-collapse w3-white w3-animate-left" style="z-index:3;width:200px;" id="mySidebar" ng-controller="SessionController" ng-init="userTeams(); userinfo()">
     <br>
@@ -27,14 +27,14 @@ $user_id = $_SESSION['user_id'];
     <hr>
     <div class="w3-bar-block">
         <a class="w3-bar-item w3-bar w3-button w3-padding-16 w3-hide-large w3-dark-grey w3-hover-black" onclick="w3_close()" title="close menu"><i class="fa fa-remove fa-fw"></i>&nbsp; Close Menu</a>
-        <div onClick="window.location.reload()" ng-click="teamSelect(x.team_id, x.admin, x.type, x.team_name, x.plan)" ng-repeat="x in teams | filter : {'type':'personal'} " style="text-transform: capitalize; color: white;">
+        <div ng-click="teamSelect(x.team_id, x.admin, x.type, x.team_name, x.plan)" ng-repeat="x in teams | filter : {'type':'personal'} " style="text-transform: capitalize; color: white;">
             <a ng-class="{'active': x.team_id == <?php echo $team_id;?>}" class="w3-bar-item w3-bar w3-button w3-padding"><i class="fa fa-user fa-fw"></i>&nbsp; {{x.team_name}}</a>
         </div>
         <a onclick="document.getElementById('edit_user').style.display='block'" class="w3-bar-item w3-bar w3-button w3-padding"><i class="fa fa-cog fa-fw"></i>&nbsp; Edit Account</a>
         <a onclick="document.getElementById('team_create').style.display='block'" class="w3-bar-item w3-bar w3-button w3-padding"><i class="fa fa-plus fa-fw"></i>&nbsp; Create Team</a>
         <a href="php/logout.php" class="w3-bar-item w3-bar w3-button w3-padding logout"><i class="fa fa-sign-out fa-fw"></i>&nbsp; Log Out</a>
         <hr>
-        <div onClick="window.location.reload()" ng-click="teamSelect(x.team_id, x.admin, x.type, x.team_name, x.plan)" ng-repeat="x in teams | filter : {'type':'team'}" style="text-transform: capitalize; color: white;">
+        <div ng-click="teamSelect(x.team_id, x.admin, x.type, x.team_name, x.plan)" ng-repeat="x in teams | filter : {'type':'team'}" style="text-transform: capitalize; color: white;">
             <a ng-class="{'active': x.team_id == <?php echo $team_id;?>}" class="w3-bar-item w3-bar w3-button w3-padding"><i class="fa fa-users fa-fw"></i>&nbsp; {{x.team_name}}</a>
         </div>
         <br>

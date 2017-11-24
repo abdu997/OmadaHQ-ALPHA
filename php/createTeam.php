@@ -13,6 +13,8 @@ if(count($data) > 0){
         echo"Team Name cannot be more than 20 characters";
     } else {
         $sql = "INSERT INTO team(team_name, type, plan) VALUES('$team_name', 'team', 'free')";
+        $result = mysqli_query($connect, $sql);
+        $row = mysqli_fetch_array($result);
         if(mysqli_query($connect, $sql)){
             $team_id = mysqli_insert_id($connect);
             $sql2 = "INSERT INTO team_user(team_id, user_id, admin) VALUES('$team_id', '$user_id', 'Y')";
@@ -21,7 +23,7 @@ if(count($data) > 0){
                 $_SESSION['team_id'] = $team_id;
                 $_SESSION['team_type'] = 'team';
                 $_SESSION['admin_status'] = 'Y';
-                $_SESSION['plan'] = 'Y';
+                $_SESSION['plan'] = $row['plan'];
             }
         } else {
             echo"SQL error";
