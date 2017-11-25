@@ -27,7 +27,7 @@ if ($type == "goal"){
         $goal_id = "null";
         $task_id = "null";
         $color = "null";
-        $progress = "null";
+        $progress = "incomplete";
     } else {
         die("Goal name must be between 0 and 20 Characters");
     }
@@ -45,7 +45,7 @@ if ($type == "goal"){
             $numerator = $optimistic_time + 4 * $realistic_time + $pessimistic_time;
             $expected_time = $numerator / 6;
             $color = random_color();
-            $progress = "null";
+            $progress = "incomplete";
             $goal_id = $_SESSION['goal_id'];
             $task_id = "null";
         } else {
@@ -67,7 +67,7 @@ if ($type == "goal"){
         if($optimistic_time > 0 && $realistic_time > 0 && $pessimistic_time > 0){
             $numerator = $optimistic_time + 4 * $realistic_time + $pessimistic_time;
             $expected_time = $numerator / 6;
-            $progress = "null";
+            $progress = "incomplete";
             $goal_id = $_SESSION['goal_id'];
             $task_id = $_SESSION['task_id'];
             $color = $_SESSION['color'];
