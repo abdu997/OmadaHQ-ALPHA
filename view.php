@@ -16,16 +16,19 @@
     }
     .check {
         color: green;
-        opacity: 0.2;
+        opacity: 0.3;
         float: right;
         margin: 10px;
         font-size: 20px; 
         cursor: pointer;
     }
     .check:hover {
-        opacity: 1;
+        opacity: 0.5;
     }
     .checked {
+        opacity: 0.7;
+    }
+    .checked:hover {
         opacity: 1;
     }
 </style>

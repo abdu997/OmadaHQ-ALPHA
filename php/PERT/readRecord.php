@@ -16,16 +16,25 @@ $row2 = mysqli_fetch_array($result2);
 $sql3 = "SELECT SUM(expected_time) expected_sum FROM pert_table WHERE goal_id = '$goal_id' AND progress = 'incomplete'";
 $result3 = mysqli_query($connect, $sql3);
 $row3 = mysqli_fetch_array($result3);
+$date = strtotime("Y-m-d");
 $start_time2 = $row2["start_time"];
+if($start_time2 > $date){
+    $start_time4 = $start_time2;
+} else if($start_time2 < $date){
+    $start_time4 = $date;
+} else {
+    echo "oh no";
+}
 $expected_sum = $row3["expected_sum"];
 if ($expected_sum == null){
     $expected_sum2 = "0";
 } else {
     $expected_sum2 = $expected_sum;
 }
-$start_time3 = new DateTime($start_time2);
+$start_time3 = new DateTime($start_time4);
 $start_time3->add(new DateInterval('P'.$expected_sum2.'D'));
-$row2["estimate_end"] = $start_time2->format('Y-m-d');
+$estimate = $start_time3->format('Y-m-d');
+$row2["estimate_end"] = $estimate;
 if ($count > 0){
     while ($row = mysqli_fetch_array($result)){ 
         $type = $row["type"];
