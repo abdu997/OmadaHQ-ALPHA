@@ -325,6 +325,7 @@ app.controller('PERTController', function($scope, $http) {
             }
         });
     }
+    
     $scope.deleteRecord = function(record_id, type){
         $scope.record_id = record_id;
         $scope.type = type;
@@ -333,6 +334,7 @@ app.controller('PERTController', function($scope, $http) {
                 "php/PERT/deleteRecord.php", 
                 {
                     'record_id': $scope.record_id,
+                    'type': $scope.type
                 }
             ).success(function(data){
                 if (data == "success"){
@@ -358,12 +360,13 @@ app.controller('PERTController', function($scope, $http) {
         ).success(function(data){
             if(data == "success"){
                 $scope.task_create = true;
-                $scope.sub_task_create = false;
+                $scope.sub_task_create = true;
             } else {
                 alert(data);
             }
         });
     }
+    
     $scope.createSubTask = function(){
         $http.post(
             "php/PERT/createRecord.php", {
@@ -386,9 +389,9 @@ app.controller('PERTController', function($scope, $http) {
         });
     }
     
-    $scope.fetchSubTasks = function(){
-        $http.get("php/PERT/readSubTasks.php").success(function(data){
-            $scope.subTasks = data;
+    $scope.fetchRecord = function(){
+        $http.get("php/PERT/readRecord.php").success(function(data){
+            $scope.records = data;
         });
     }
     
@@ -400,7 +403,7 @@ app.controller('PERTController', function($scope, $http) {
             }
         ).success(function(data){
             if (data == "success"){
-                $scope.fetchSubTasks();
+                $scope.fetchRecord();
             } else {
                 alert(data);
             }
