@@ -203,4 +203,33 @@ window.onclick = function(event) {
         $("#editAdminForm").removeClass("hidden");
     });
 </script>
+<!--Nav Bar Javascript-->
+<script for="sidebar">
+    var mySidebar = document.getElementById("mySidebar");
+    var overlayBg = document.getElementById("myOverlay");
+    function w3_open() {
+        if (mySidebar.style.display === 'block') {
+            mySidebar.style.display = 'none';
+            overlayBg.style.display = "none";
+        } else {
+            mySidebar.style.display = 'block';
+            overlayBg.style.display = "block";
+        }
+    }
+    function w3_close() {
+        mySidebar.style.display = "none";
+        overlayBg.style.display = "none";
+    }
+</script>
+<script>
+    var myVar;
+
+    function myFunction() {
+        myVar = setTimeout(showPage, 500);
+    }
+
+    function showPage() {
+        document.getElementById("app").style.display = "block";
+    }
+</script>
 

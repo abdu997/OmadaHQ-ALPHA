@@ -45,8 +45,6 @@ header('Location: login.php');
 
     <div class="w3-main" style="margin-left: 200px">
         <div class="w3-container">
-        </div>
-        <div class="w3-container">
             <div class="row">
                 <div class="col-md-12">
                     <div ng-controller="PERTController" style="display:none;" id="app" class="animate-bottom">
@@ -59,36 +57,6 @@ header('Location: login.php');
 
     <!-- Bootstrap Core JavaScript -->
     <script src="js/bootstrap.min.js"></script>
-    
-    <!--Javascript-->
-    <script for="sidebar">
-        var mySidebar = document.getElementById("mySidebar");
-        var overlayBg = document.getElementById("myOverlay");
-        function w3_open() {
-            if (mySidebar.style.display === 'block') {
-                mySidebar.style.display = 'none';
-                overlayBg.style.display = "none";
-            } else {
-                mySidebar.style.display = 'block';
-                overlayBg.style.display = "block";
-            }
-        }
-        function w3_close() {
-            mySidebar.style.display = "none";
-            overlayBg.style.display = "none";
-        }
-    </script>
-    <script>
-        var myVar;
-
-        function myFunction() {
-            myVar = setTimeout(showPage, 500);
-        }
-
-        function showPage() {
-          document.getElementById("app").style.display = "block";
-        }
-    </script>
 </body>
 
 </html> 
