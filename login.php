@@ -7,6 +7,7 @@ if(isset($_GET['email'])){
     $display = "display";
 } else {
     $display = "hidden";
+    $email = "example@domain.com";
 }
 ?>
 <html>
@@ -22,6 +23,9 @@ if(isset($_GET['email'])){
         <style>
             .hidden {
                 display: none;
+            }
+            .display {
+                display: block;
             }
             body {
                 background: #f1f1f1!important;
@@ -67,7 +71,7 @@ if(isset($_GET['email'])){
         <div id="registerForm" class="<?php echo $display;?>" style="width: 200px">
             <form ng-hide="registerForm">
                 <label>Email</label><br>
-                <input type="email" id="registerEmail" value="<?php echo $email;?>" class="w3-input w3-border-0"><br>
+                <input type="email" ng-model="registerEmail" placeholder="<?php echo $email;?>" class="w3-input w3-border-0"><br>
                 <small style="color: red;" ng-show="emailInvalid">Valid email is required<br></small>
                 <label>First Name</label><br>
                 <input type="text" ng-model="firstName" class="w3-input w3-border-0" pattern="[a-zA-Z]+" ng-pattern-restrict><br>
@@ -151,8 +155,8 @@ if(isset($_GET['email'])){
             }
             
             $scope.emailpattern = /[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$/;
-            $scope.register = function() { ;
-                if($scope.emailpattern.test(document.getElementById("registerEmail"))) {
+            $scope.register = function() {
+                if($scope.emailpattern.test($scope.registerEmail)) {
                     if($scope.firstName == null){
                         $scope.firstEmpty = true;
                         $scope.emailInvalid = false;
@@ -169,7 +173,7 @@ if(isset($_GET['email'])){
                     } else {
                         $http.post(
                             "php/registerRequest.php", {
-                                'email': document.getElementById("registerEmail"),
+                                'email': $scope.registerEmail,
                                 'first_name': $scope.firstName,
                                 'last_name': $scope.lastName
                             }
@@ -181,7 +185,7 @@ if(isset($_GET['email'])){
                                 $scope.emailInvalid = false;
                                 $scope.registerSuccess = false;
                             } else if(data == "success"){
-                                document.getElementById("registerEmail") = null;
+                                $scope.registerEmail = null;
                                 $scope.firstName = null;
                                 $scope.lastName = null;
                                 $scope.registerSuccess = true;

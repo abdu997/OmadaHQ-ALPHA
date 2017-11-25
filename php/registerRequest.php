@@ -1,5 +1,6 @@
 <?php
 include "connect.php";
+error_reporting(0);
 $data = json_decode(file_get_contents("php://input"));
 $email = mysqli_real_escape_string($connect, $data->email);
 $first_name = mysqli_real_escape_string($connect, $data->first_name);

@@ -1,6 +1,6 @@
 <?php
 ini_set('display_errors', 1);
-error_reporting(E_ALL);
+error_reporting(0);
 include "connect.php";
 $data = json_decode(file_get_contents("php://input"));
 session_start();
