@@ -24,10 +24,6 @@
     .number-input {
         width: 50%;
     }
-    .col-xs-4 {
-        padding-right: 0px;
-        padding-left: 0px;
-    }
 </style>
 <div class="containter" ng-init="fetchGoals()">
     <div class="row">

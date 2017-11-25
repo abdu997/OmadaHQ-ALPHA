@@ -56,7 +56,7 @@
                 <span onclick="document.getElementById('create_task').style.display='none'" class="w3-button w3-display-topright" style="font-size: 20px">×</span>
                 <h2>Task Create</h2>
                 <form name="task_create2" ng-hide="task_create">
-                    <label>Task #1<span class="asterisk">*</span>
+                    <label>Task<span class="asterisk">*</span>
                     </label>
                     <input ng-model="task_name" class="w3-input w3-border-0" type="text" maxlength="40" required>
                     <div class="col-xs-4">
@@ -77,7 +77,7 @@
                     <input type="submit" ng-disabled="task_create2.$invalid" ng-click="createTask()" class="w3-button" value="Create" style="background: white; margin-top: 10px; width: 85px">
                 </form>
                 <form name="sub_task_create2" ng-show="sub_task_create">
-                    <label>Sub Tasks for Task#1<span class="asterisk">*</span>
+                    <label>Sub Tasks<span class="asterisk">*</span>
                     </label>
                     <input ng-model="sub_task_name" class="w3-input w3-border-0" type="text" maxlength="40" required>         
                     <div class="col-xs-4">
