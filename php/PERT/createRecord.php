@@ -16,41 +16,45 @@ function random_color() {
 if ($type == "goal"){
     $name = mysqli_real_escape_string($connect, $data->goal_name);
     if(strlen($name) > 0 && strlen($name) < 20){
-        $description = mysqli_real_escape_string($connect, $data->goal_description);
-        $start_message = mysqli_real_escape_string($connect, $data->start_message);
         $end_time = mysqli_real_escape_string($connect, $data->end_time);
         $start_time = mysqli_real_escape_string($connect, $data->start_time);
-        $expected_time = "null";
-        $optimistic_time = "null";
-        $realistic_time = "null";
-        $pessimistic_time = "null";
-        $goal_id = "null";
-        $task_id = "null";
-        $color = "null";
-        $progress = "incomplete";
+        if($end_time > $start_time){
+            $description = mysqli_real_escape_string($connect, $data->goal_description);
+            $start_message = mysqli_real_escape_string($connect, $data->start_message);
+            $expected_time = "null";
+            $optimistic_time = "null";
+            $realistic_time = "null";
+            $pessimistic_time = "null";
+            $goal_id = "null";
+            $task_id = "null";
+            $color = "null";
+            $progress = "incomplete";
+        } else {
+            die("Deadline cannot be before start date");
+        }
     } else {
         die("Goal name must be between 0 and 20 Characters");
     }
 } else if($type == "task"){
     $name = mysqli_real_escape_string($connect, $data->task_name);
     if(strlen($name) > 0 && strlen($name) < 20){
-        $description = "null";
-        $start_message = "null";
-        $start_time = "null";
-        $end_time = "null";
-        $optimistic_time = mysqli_real_escape_string($connect, $data->optimistic_time);
-        $realistic_time = mysqli_real_escape_string($connect, $data->realistic_time);
-        $pessimistic_time = mysqli_real_escape_string($connect, $data->pessimistic_time);
-        if($optimistic_time > 0 && $realistic_time > 0 && $pessimistic_time > 0){
-            $numerator = $optimistic_time + 4 * $realistic_time + $pessimistic_time;
-            $expected_time = $numerator / 6;
-            $color = random_color();
-            $progress = "incomplete";
-            $goal_id = $_SESSION['goal_id'];
-            $task_id = "null";
-        } else {
-            die("Days must be more than zero");
-        }
+            $description = "null";
+            $start_message = "null";
+            $start_time = "null";
+            $end_time = "null";
+            $optimistic_time = mysqli_real_escape_string($connect, $data->optimistic_time);
+            $realistic_time = mysqli_real_escape_string($connect, $data->realistic_time);
+            $pessimistic_time = mysqli_real_escape_string($connect, $data->pessimistic_time);
+            if($optimistic_time > 0 && $realistic_time > 0 && $pessimistic_time > 0 && filter_var($optimistic_time, FILTER_VALIDATE_INT) && filter_var($realistic_time, FILTER_VALIDATE_INT) && filter_var($pessimistic_time, FILTER_VALIDATE_INT)){
+                $numerator = $optimistic_time + 4 * $realistic_time + $pessimistic_time;
+                $expected_time = $numerator / 6;
+                $color = random_color();
+                $progress = "incomplete";
+                $goal_id = $_SESSION['goal_id'];
+                $task_id = "null";
+            } else {
+                die("Days must be an integer more than zero");
+            }
     } else {
         die("Task name must be between 0 and 20 Characters");
     }

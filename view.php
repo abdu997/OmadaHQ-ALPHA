@@ -26,7 +26,7 @@
         opacity: 0.5;
     }
     .checked {
-        opacity: 0.7;
+        opacity: 0.8;
     }
     .checked:hover {
         opacity: 1;
@@ -35,10 +35,10 @@
 <?php include "modals.php";?>
 <div>
     <div style="margin-bottom: 20px">
-        <button onclick="window.location.href = 'index.php'" style="background: white;" class="w3-button">Back To Goals</button>
-        <button onclick="document.getElementById('create_task').style.display='block'" style="background: white;" class="w3-button">Add Task</button>
-        <button onclick="document.getElementById('list_view').style.display='block'" style="background: white;" class="w3-button">List View</button>
-        <button onclick="document.getElementById('column_view').style.display='block'" style="background: white;" class="w3-button">Column View</button>
+        <center>
+            <button onclick="window.location.href = 'index.php'" style="background: white;" class="w3-button">Back To Goals</button>
+            <button onclick="document.getElementById('create_task').style.display='block'" style="background: white;" class="w3-button">Add Task</button>
+        </center>
     </div>
     <div id="column_view" ng-init="fetchRecord()">
         <center>

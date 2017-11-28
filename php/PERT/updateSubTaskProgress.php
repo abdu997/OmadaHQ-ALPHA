@@ -14,7 +14,7 @@ if(count($data) > 0){
     $current_progress = $row["progress"];
     if($current_progress == "complete"){
         $progress = "incomplete";
-    } else if($current_progress == "incomplete"){
+    } else if($current_progress == "incomplete" || $current_progress == ""){
         $progress = "complete";
     }
     if($count = 1){

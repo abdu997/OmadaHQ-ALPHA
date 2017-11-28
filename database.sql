@@ -70,4 +70,4 @@ CREATE TABLE `pert_table` (
   `status` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`record_id`),
   UNIQUE KEY `record_id_UNIQUE` (`record_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=01 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=latin1;
