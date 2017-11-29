@@ -23,7 +23,7 @@ if($start_time > $date){
 }
 
 //Getting the sum of expected times from all subtasks and tasks of a goal
-$sql3 = "SELECT SUM(expected_time) expected_sum FROM pert_table WHERE goal_id = '$goal_id' AND progress = 'incomplete'";
+$sql3 = "SELECT SUM(expected_time) expected_sum FROM pert_table WHERE goal_id = '$goal_id' AND progress = 'incomplete' AND status = 'valid'";
 $result3 = mysqli_query($connect, $sql3);
 $row3 = mysqli_fetch_array($result3);
 $expected_sum = $row3["expected_sum"];
