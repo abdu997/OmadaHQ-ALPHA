@@ -29,7 +29,7 @@
     <div class="row">
         <div class="col-sm-3" ng-repeat="x in goals">
             <div>
-                <div ng-click="editGoal(x.record_id, x.name, x.description, x.start_message, x.start_time, x.end_time)" style="float: left; margin: 10px; cursor: pointer;"><i class="fa fa-cog fw"></i></div>
+                <div ng-click="editGoal(x.record_id, x.name, x.description, x.start_message, x.start_time, x.end_time)" style="float: left; margin: 10px; cursor: pointer;"><i class="fa fa-pencil-square-o fw"></i></div>
                 <div ng-click="deleteRecord(x.record_id, x.type)" style="float: right; color: red; margin: 10px; cursor: pointer;"><i class="fa fa-trash fw"></i></div>
                 <center ng-click="selectGoal(x.record_id)" class="goal">
                     <h2 style="margin-bottom: 40px; text-transform: capitalize;">{{x.name}}</h2>

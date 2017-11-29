@@ -170,9 +170,9 @@ $user_id = $_SESSION['user_id'];
     <a href="#" data-toggle="editTeamTooltip" data-placement="bottom" title="Only team admins can edit a team"><i class="fa fa-question-circle fw" style="font-size: 17px"></i></a> &nbsp;
     <button onclick="document.getElementById('edit_team').style.display='block'" ng-disabled="'N' == '<?php echo $admin_status;?>' || 'personal' == '<?php echo $team_type;?>'" style="background: white;" class="w3-button">Edit Team</button>
     <script>
-    $(document).ready(function(){
-        $('[data-toggle="editTeamTooltip"]').tooltip();   
-    });
+        $(document).ready(function(){
+            $('[data-toggle="editTeamTooltip"]').tooltip();   
+        });
     </script>
 </div>
 <div class="team-title">
