@@ -53,8 +53,8 @@ if(isset($_GET['email'])){
         <center>
             <h1 style="margin-bottom: 30px">OmadaHQ</h1>
             <div class="<?php echo $hidden;?>">
-                <button ng-click="navButton()" id="loginTab" class="w3-button" style="width: 96px">Login</button>
-                <button ng-click="navButton()" id="registerTab" class="w3-button" style="width: 96px">Register</button>
+                <button ng-click="navButton()" id="loginTab" class="w3-button" style="width: 98px">Login</button>
+                <button ng-click="navButton()" id="registerTab" class="w3-button" style="width: 98px">Register</button>
             </div>
         </center><br>
         <form id="loginForm" class="<?php echo $hidden;?>">

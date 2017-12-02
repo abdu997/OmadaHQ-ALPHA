@@ -15,10 +15,10 @@
                     <input ng-model="start_message" class="w3-input w3-border-0" type="text" required> 
                     <label>Start Date<span class="asterisk">*</span>
                     </label>
-                    <input ng-model="start_time" class="w3-input w3-border-0" type="date" required>
+                    <input id="start_time" ng-model="start_time" class="w3-input w3-border-0" type="date" required>
                     <label>Deadline<span class="asterisk">*</span>
                     </label>
-                    <input ng-model="end_time" class="w3-input w3-border-0" type="date" required>             
+                    <input id="end_time" ng-model="end_time" class="w3-input w3-border-0" type="date" required>             
                     <input type="submit" ng-disabled="goal_create.$invalid" ng-click="createGoal()" class="w3-button" value="{{goalBtn}}" style="background: white; margin-top: 10px; width: 85px; text-transform: capitalize">
                 </form>
             </div>
@@ -36,17 +36,17 @@
                     <div class="col-xs-4">
                         <label>Optimistic Time<span class="asterisk">*</span>
                         </label>
-                        <input ng-model="optimistic_time" min="1" type="input" class="w3-input w3-border-0 number-input" required><small>Days</small>
+                        <input id="optimistic_time" ng-model="optimistic_time" min="1" type="number" class="w3-input w3-border-0 number-input" required><small>Days</small>
                     </div>
                     <div class="col-xs-4">
                         <label>Realistic Time<span class="asterisk">*</span>
                         </label>
-                        <input ng-model="realistic_time" min="1" type="input" class="w3-input w3-border-0 number-input" required><small>Days</small>
+                        <input id="realistic_time" ng-model="realistic_time" min="1" type="number" class="w3-input w3-border-0 number-input" required><small>Days</small>
                     </div>
                     <div class="col-xs-4">
                         <label>Pessimistic Time<span class="asterisk">*</span>
                         </label>
-                        <input ng-model="pessimistic_time" min="1" type="input" class="w3-input w3-border-0 number-input" required><small>Days</small>
+                        <input id="pessimistic_time" ng-model="pessimistic_time" min="1" type="number" class="w3-input w3-border-0 number-input" required><small>Days</small>
                     </div><br>
                     <input type="submit" ng-disabled="task_create2.$invalid" ng-click="createTask()" class="w3-button" value="{{taskBtn}}" style="background: white; margin-top: 10px; width: 85px; text-transform: capitalize;">
                 </form>
@@ -57,17 +57,17 @@
                     <div class="col-xs-4">
                         <label>Optimistic Time<span class="asterisk">*</span>
                         </label>
-                        <input ng-model="sub_optimistic_time" type="input" min="1" class="w3-input w3-border-0 number-input" required><small>Days</small>
+                        <input id="sub_optimistic_time" ng-model="sub_optimistic_time" type="number" min="1" class="w3-input w3-border-0 number-input" required><small>Days</small>
                     </div>
                     <div class="col-xs-4">
                         <label>Realistic Time<span class="asterisk">*</span>
                         </label>
-                        <input ng-model="sub_realistic_time" min="1" type="input" class="w3-input w3-border-0 number-input" required><small>Days</small>
+                        <input id="sub_realistic_time" ng-model="sub_realistic_time" min="1" type="number" class="w3-input w3-border-0 number-input" required><small>Days</small>
                     </div>
                     <div class="col-xs-4">
                         <label>Pessimistic Time<span class="asterisk">*</span>
                         </label>
-                        <input min="1" ng-model="sub_pessimistic_time" type="input" class="w3-input w3-border-0 number-input" required><small>Days</small>
+                        <input id="sub_pessimistic_time" min="1" ng-model="sub_pessimistic_time" type="number" class="w3-input w3-border-0 number-input" required><small>Days</small>
                     </div><br>                    
                     <input type="submit" ng-disabled="sub_task_create2.$invalid" ng-click="createSubTask()" class="w3-button" value="{{subTaskBtn}}" style="background: white; margin-top: 10px; width: 85px; text-transform: capitalize;"><br>
                     <a href="tasks.php"><input type="button" value="Done" style="background: white; margin-top: 10px; width: 85px" class="w3-button"></a>

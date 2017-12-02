@@ -295,8 +295,8 @@ app.controller('PERTController', function($scope, $http) {
         $scope.goal_name = name;
         $scope.goal_description = description;
         $scope.start_message = start_message;
-        $scope.start_time = start_time;
-        $scope.end_time = end_time;
+        document.getElementById("start_time").value = start_time;
+        document.getElementById("end_time").value = end_time;
         $scope.goalBtn = "update";
     }
     
@@ -382,21 +382,21 @@ app.controller('PERTController', function($scope, $http) {
         document.getElementById('create_task').style.display='block';
         $scope.taskBtn = "update";
         $scope.task_name = task_name;
-        $scope.optimistic_time = optimistic_time;
-        $scope.realistic_time = realistic_time;
-        $scope.pessimistic_time = pessimistic_time;
+        document.getElementById("optimistic_time").value = optimistic_time;
+        document.getElementById("realistic_time").value = realistic_time;
+        document.getElementById("pessimistic_time").value = pessimistic_time;
         $scope.record_id = record_id;
     }
-
+    
     $scope.updateSubTask = function(record_id, task_name, optimistic_time, realistic_time, pessimistic_time){
         $scope.task_create = true;
         $scope.sub_task_create = true;
         document.getElementById('create_task').style.display='block';
         $scope.subTaskBtn = "update";
         $scope.sub_task_name = task_name;
-        $scope.sub_optimistic_time = optimistic_time;
-        $scope.sub_realistic_time = realistic_time;
-        $scope.sub_pessimistic_time = pessimistic_time;
+        document.getElementById("sub_optimistic_time").value = optimistic_time;
+        document.getElementById("sub_realistic_time").value = realistic_time;
+        document.getElementById("sub_pessimistic_time").value = pessimistic_time;
         $scope.record_id = record_id;
     }
     

@@ -99,7 +99,7 @@
                             <h4>{{x.name}}</h4>
                             <p>Duration:<i>&nbsp;{{x.expected_time}} days</i><br>
                             Cumulative Time:<i>&nbsp;{{x.cumulative_time}} days</i></p>
-                        </center>
+                         </center>
                     </div>
                     <i class="fa fa-pencil-square-o pencil fw" ng-click="updateTask(x.record_id, x.name, x.optimistic_time, x.realistic_time, x.pessimistic_time)"></i>
                     <i class="fa fa-trash fw trash" ng-click="deleteRecord(x.record_id, x.type)"></i>
@@ -121,8 +121,8 @@
         </center>
     </div>
 </div>
-    <script>
-        $(document).ready(function(){
-            $('[data-toggle="addSub"]').tooltip();   
-        });
-    </script>
+<script>
+    $(document).ready(function(){
+        $('[data-toggle="addSub"]').tooltip();   
+    });
+</script>
