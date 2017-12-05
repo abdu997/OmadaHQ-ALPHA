@@ -15,6 +15,9 @@
         padding: 25px;
         padding-bottom: 10px;
     }
+    .task {
+
+    }
     .add {
         float: left;
         margin: 10px;
@@ -77,7 +80,7 @@
             </div>
             <div class="col-sm-3">
                 <h2>Sub Tasks</h2>
-                <div class="goal" style="border-left: 8px solid #{{x.color}};" ng-repeat="x in records | filter: {'type': 'sub_task'}:true | orderBy : 'task_id'">
+                <div class="goal sub-task" style="border-left: 8px solid #{{x.color}};" ng-repeat="x in records | filter: {'type': 'sub_task'}:true | orderBy : 'task_id'">
                     <i ng-click="changeSubTaskProgress(x.record_id)" ng-class="{checked: x.progress == 'complete'}" class="fa fa-check fw check"></i>
                     <div class="tasks">
                         <center>
@@ -91,7 +94,7 @@
             </div>
             <div class="col-sm-3">
                 <h2>Tasks</h2>
-                <div class="goal" style="border-left: 8px solid #{{x.color}};" ng-repeat="x in records | filter: {'type': 'task'}:true | orderBy : 'record_id'">
+                <div class="goal task" style="border-left: 8px solid #{{x.color}};" ng-repeat="x in records | filter: {'type': 'task'}:true | orderBy : 'record_id'">
                     <a href="#" data-toggle="addSub" data-placement="bottom" title="Create a Sub Task"><i ng-click="selectTask(x.record_id)" class="fa fa-plus fw add"></i></a>
                     <i ng-click="changeSubTaskProgress(x.record_id)" ng-class="{checked: x.progress == 'complete'}" class="fa fa-check fw check"></i>
                     <div class="tasks">

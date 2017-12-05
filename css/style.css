@@ -29,6 +29,7 @@ h4 {
 .active.w3-bar{
     color: #fff!important;
     background-color: #2196F3!important;
+    display: block;
 }
 
 .w3-bar,
